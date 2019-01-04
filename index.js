@@ -47,11 +47,17 @@ app.use(function(req, res, next) {
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
+//----------------START-Akses folder-----------------//
+
 var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
+var adminRoutes = require('./routes/admin');
 
 app.use(mainRoutes);
 app.use(userRoutes);
+app.use(adminRoutes);
+
+//----------------END-Akses folder-----------------//
 
 app.listen(secret.port, function(err){
   if (err) throw err;

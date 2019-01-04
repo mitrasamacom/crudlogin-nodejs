@@ -25,6 +25,7 @@ mongoose.connect(secret.database, function(err) {
 
 // Middleware
 app.use(express.static(__dirname + '/public'));
+// gambar,css,js yang static harus disimpen di public
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

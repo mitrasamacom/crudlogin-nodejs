@@ -12,9 +12,11 @@ var passport = require('passport');
 
 var secret = require('./config/secret');
 var User = require('./models/user');
+var Category = require('./models/category');
 
 var app = express();
 
+//----------------START Koneksi DB-----------------//
 mongoose.connect(secret.database, function(err) {
   if (err) {
     console.log(err);
@@ -22,6 +24,7 @@ mongoose.connect(secret.database, function(err) {
     console.log("Connected to the database");
   }
 });
+//----------------END-Koneksi DB-----------------//
 
 // Middleware
 app.use(express.static(__dirname + '/public'));
@@ -44,6 +47,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  Category.find({}, function(err, categories) {
+    if (err) return next(err);
+    res.locals.categories = categories;
+    next();
+  });
+});
+
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
@@ -59,7 +70,9 @@ app.use(adminRoutes);
 
 //----------------END-Akses folder-----------------//
 
+//----------------START-Akses Port-----------------//
 app.listen(secret.port, function(err){
   if (err) throw err;
   console.log("Server is Running on port " + secret.port);
 });
+//----------------END-Akses Port-----------------//

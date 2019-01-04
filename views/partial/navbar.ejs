@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-gelora">
   <a class="navbar-brand" href="#">
     <img src="/asset/logo.png" width="50" height="30" class="d-inline-block align-top" alt="">
-    <font style="font-family:Lucida Console;" aria-setsize="15">Gelora Putra Perkasa</font>
+    <font style="font-family:Lucida Console;" aria-setsize="15"><strong>Gelora Putra Perkasa</strong></font>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,10 +9,21 @@
 
   <ul class="nav navbar-nav ml-auto">
 
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% for (var i = 0; i < categories.length; i++) { %>
+            <a class="dropdown-item"><%= categories[i].name %></a>
+          <% } %>
+      </div>
+    </li>
+
     <% if (!user) { %>
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown warna-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Signup/Login
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -25,7 +36,7 @@
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= user.profile.name %>
+          Hai <%= user.profile.name %>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="/profile">Profile</a>

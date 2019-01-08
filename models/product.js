@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var Scheme = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-var ProductSchema = new Scheme({
+var ProductSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   name: String,
   price: Number,

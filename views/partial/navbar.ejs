@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-gelora">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="http://localhost:3000">
     <img src="/asset/logo.png" width="50" height="30" class="d-inline-block align-top" alt="">
     <font style="font-family:Lucida Console;" aria-setsize="15"><strong>Gelora Putra Perkasa</strong></font>
   </a>
@@ -7,7 +7,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <ul class="nav navbar-nav ml-auto">
+  <!-- <ul class="nav navbar-nav ml-auto">
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,5 +46,53 @@
 
     <% } %>
 
-  </ul>
+  </ul> -->
+  <div id='cssmenu'>
+    <ul>
+       <li class='active'><a href='#'>Home</a></li>
+       <li><a href='#'>Products</a></li>
+       <li><a href='#'>About</a></li>
+       <li><a href='#'>Company</a></li>
+       <li><a href='#'>Contact</a></li>
+       <li><a href='#'>Article</a></li>
+       <li><a href='#'>News</a></li>
+       <li><a href='#'>Member</a></li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% for (var i = 0; i < categories.length; i++) { %>
+              <a class="dropdown-item"><%= categories[i].name %></a>
+            <% } %>
+        </div>
+      </li>
+  
+      <% if (!user) { %>
+  
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown warna-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Signup/Login
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/signup">Signup</a>
+          <a class="dropdown-item" href="/login">Login</a>
+        </div>
+      </li>
+  
+      <% } else { %>
+  
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hai <%= user.profile.name %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile">Profile</a>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </li>
+  
+      <% } %>
+    </ul>
+  </div>
 </nav>
